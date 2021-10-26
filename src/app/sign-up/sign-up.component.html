@@ -1,0 +1,46 @@
+<form (ngSubmit)="onSubmit()" #mySignUp="ngForm">
+    <div>
+        Form submitted ? {{ mySignUp.submitted }}
+        Form valid ? {{ mySignUp.valid }}
+        Form invalid ? {{ mySignUp.invalid }}
+    </div>
+    <div>
+        <label for="email-user">Email</label>
+        <input type="email" id="email" name="email-user" [(ngModel)]="user.email" #email="ngModel" required email>
+    </div>
+    <div *ngIf="email.errors">
+        <span *ngIf="email.errors?.required && email.touched">L'email est requis</span>
+        <span *ngIf="email.errors?.email">l'email est invalide</span>
+    </div>
+
+    <div>
+        <label for="firstname-user">Firstname</label>
+        <input type="text" id="firstname" name="firstname-user" [(ngModel)]="user.firstname" #firstname="ngModel" required minlength="3" maxlength="15">
+    </div>
+    <div *ngIf="firstname.errors">
+        <span *ngIf="firstname.errors?.required && firstname.touched">le nom est requis</span>
+        <span *ngIf="firstname.errors?.minlength">la longueur doit être supérieure à 3</span>
+        <span *ngIf="firstname.errors?.maxlength">la longueur doit être inférierus à 15</span>
+    </div>
+
+    <div>
+        <label for="lastname-user">Lastname</label>
+        <input type="text" id="lastname" name="lastname-user" [(ngModel)]="user.lastname" #lastname="ngModel" required minlength="3" maxlength="15">
+    </div>
+    <div *ngIf="lastname.errors">
+        <span *ngIf="lastname.errors?.required && lastname.touched">Le prénom est requis</span>
+        <span *ngIf="lastname.errors?.minlength">la longueur doit être supérieure à 3</span>
+        <span *ngIf="lastname.errors?.maxlength">la longueur doit être inférierus à 15</span>
+    </div>
+
+    <div>
+        <label for="password-user">Password</label>
+        <input type="text" id="password" name="password-user" [(ngModel)]="user.password" #password="ngModel" required>
+    </div>
+    <div *ngIf="password.errors">
+        <Span *ngIf="password.errors?.required && password.touched">Le password est requis</Span>
+    </div>
+
+    <button type="submit">Envoyer</button>
+    
+</form>

@@ -8,3 +8,10 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'myFormTemplates';
 }
+
+export class User {
+  email: string="";
+  firstname: string="";
+  lastname: string="";
+  password: string="";
+}
